@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn1en6utafc2a"]
+
+[ext_resource type="Texture2D" uid="uid://dork1hd8j75f5" path="res://2D Assets/test_1.jpg" id="1_6m35g"]
+[ext_resource type="Script" path="res://Scenes/Scroller.gd" id="1_l3tu2"]
+[ext_resource type="Texture2D" uid="uid://dqafa8nkf3qwj" path="res://2D Assets/test_2.jpg" id="2_7t2pb"]
+
+[node name="GameTest" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_l3tu2")
+
+[node name="Test_1" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(50, 50)
+texture = ExtResource("1_6m35g")
+
+[node name="Test_2" type="Sprite2D" parent="."]
+position = Vector2(23431, -298)
+scale = Vector2(5, 5)
+texture = ExtResource("2_7t2pb")
