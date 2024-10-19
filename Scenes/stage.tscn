@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dj1kvqenmdado"]
+[gd_scene load_steps=11 format=3 uid="uid://dj1kvqenmdado"]
 
 [ext_resource type="Texture2D" uid="uid://bocre0msptsdx" path="res://2D Assets/AllSkyFree_Sky_ColdNight_Equirect.png" id="1_ssy54"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_uf0tx"]
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_ghh2g"]
-[ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="3_xv2yi"]
 [ext_resource type="Texture2D" uid="uid://c2xyr21b2f0ps" path="res://2D Assets/crosshair.png" id="4_kcg2c"]
 [ext_resource type="Texture2D" uid="uid://bkbmils6anfc" path="res://2D Assets/crosshairfull.png" id="5_fnhkm"]
 
@@ -46,23 +45,6 @@ autostart = true
 [node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_ghh2g")
 player = NodePath("../Player")
-
-[node name="Enemy" parent="Spawner" instance=ExtResource("3_xv2yi")]
-
-[node name="Enemy2" parent="Spawner" instance=ExtResource("3_xv2yi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -4)
-
-[node name="Enemy3" parent="Spawner" instance=ExtResource("3_xv2yi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)
-
-[node name="Enemy4" parent="Spawner" instance=ExtResource("3_xv2yi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 18)
-
-[node name="Enemy5" parent="Spawner" instance=ExtResource("3_xv2yi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 2)
-
-[node name="Enemy6" parent="Spawner" instance=ExtResource("3_xv2yi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -13)
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("crosshair_progress_bar") groups=["player"]]
 script = ExtResource("1_uf0tx")
