@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj1kvqenmdado"]
+[gd_scene load_steps=11 format=3 uid="uid://dj1kvqenmdado"]
 
 [ext_resource type="Texture2D" uid="uid://bocre0msptsdx" path="res://2D Assets/AllSkyFree_Sky_ColdNight_Equirect.png" id="1_ssy54"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_uf0tx"]
 [ext_resource type="Texture2D" uid="uid://cdppsr266yfqs" path="res://2D Assets/halal_goku.jpg" id="3_cm4gf"]
+[ext_resource type="Texture2D" uid="uid://c2xyr21b2f0ps" path="res://2D Assets/crosshair.png" id="4_kcg2c"]
+[ext_resource type="Texture2D" uid="uid://bkbmils6anfc" path="res://2D Assets/crosshairfull.png" id="5_fnhkm"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mg1sm"]
 panorama = ExtResource("1_ssy54")
@@ -24,6 +26,10 @@ fog_sky_affect = 0.923
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nlon"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kpcwv"]
+height = 42.0
+radius = 0.2
+
 [node name="Stage" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -32,6 +38,23 @@ environment = SubResource("Environment_4ra15")
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(80, 1, 70)
+
+[node name="Spawner" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -39)
+billboard = 2
+texture = ExtResource("3_cm4gf")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, -29)
+billboard = 2
+texture = ExtResource("3_cm4gf")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, -9)
+billboard = 2
+texture = ExtResource("3_cm4gf")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_uf0tx")
@@ -43,6 +66,12 @@ shape = SubResource("CapsuleShape3D_0nlon")
 [node name="Head" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 
+[node name="Area3D" type="Area3D" parent="Player/Head"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Head/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -9.6165e-07, -22)
+shape = SubResource("CylinderShape3D_kpcwv")
+
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -50,6 +79,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 omni_range = 6.519
 omni_attenuation = 0.512
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -39)
-texture = ExtResource("3_cm4gf")
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Crosshair" type="Sprite2D" parent="HUD"]
+position = Vector2(960, 540)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_kcg2c")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.0
+offset_top = -410.0
+offset_right = 615.0
+offset_bottom = 614.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 35.0
+fill_mode = 4
+texture_progress = ExtResource("5_fnhkm")
