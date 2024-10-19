@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dn1en6utafc2a"]
 
 [ext_resource type="Texture2D" uid="uid://dork1hd8j75f5" path="res://2D Assets/test_1.jpg" id="1_6m35g"]
-[ext_resource type="Script" path="res://Scenes/Scroller.gd" id="1_l3tu2"]
+[ext_resource type="Script" path="res://Scripts/Scroller.gd" id="1_l3tu2"]
 [ext_resource type="Texture2D" uid="uid://dqafa8nkf3qwj" path="res://2D Assets/test_2.jpg" id="2_7t2pb"]
 
 [node name="GameTest" type="Node2D"]
