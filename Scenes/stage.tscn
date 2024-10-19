@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dj1kvqenmdado"]
+[gd_scene load_steps=12 format=3 uid="uid://dj1kvqenmdado"]
 
 [ext_resource type="Texture2D" uid="uid://bocre0msptsdx" path="res://2D Assets/AllSkyFree_Sky_ColdNight_Equirect.png" id="1_ssy54"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_uf0tx"]
-[ext_resource type="Texture2D" uid="uid://cdppsr266yfqs" path="res://2D Assets/halal_goku.jpg" id="3_cm4gf"]
+[ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_ghh2g"]
+[ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="3_xv2yi"]
 [ext_resource type="Texture2D" uid="uid://c2xyr21b2f0ps" path="res://2D Assets/crosshair.png" id="4_kcg2c"]
 [ext_resource type="Texture2D" uid="uid://bkbmils6anfc" path="res://2D Assets/crosshairfull.png" id="5_fnhkm"]
 
@@ -28,7 +29,7 @@ fog_sky_affect = 0.923
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kpcwv"]
 height = 42.0
-radius = 0.2
+radius = 0.8
 
 [node name="Stage" type="Node3D"]
 
@@ -39,25 +40,33 @@ environment = SubResource("Environment_4ra15")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(80, 1, 70)
 
-[node name="Spawner" type="Node3D" parent="."]
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
 
-[node name="Sprite3D" type="Sprite3D" parent="Spawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -39)
-billboard = 2
-texture = ExtResource("3_cm4gf")
+[node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_ghh2g")
+player = NodePath("../Player")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Spawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, -29)
-billboard = 2
-texture = ExtResource("3_cm4gf")
+[node name="Enemy" parent="Spawner" instance=ExtResource("3_xv2yi")]
 
-[node name="Sprite3D3" type="Sprite3D" parent="Spawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, -9)
-billboard = 2
-texture = ExtResource("3_cm4gf")
+[node name="Enemy2" parent="Spawner" instance=ExtResource("3_xv2yi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -4)
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="Enemy3" parent="Spawner" instance=ExtResource("3_xv2yi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)
+
+[node name="Enemy4" parent="Spawner" instance=ExtResource("3_xv2yi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 18)
+
+[node name="Enemy5" parent="Spawner" instance=ExtResource("3_xv2yi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 2)
+
+[node name="Enemy6" parent="Spawner" instance=ExtResource("3_xv2yi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -13)
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("crosshair_progress_bar") groups=["player"]]
 script = ExtResource("1_uf0tx")
+crosshair_progress_bar = NodePath("../HUD/CrosshairProgressBar")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -66,10 +75,10 @@ shape = SubResource("CapsuleShape3D_0nlon")
 [node name="Head" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 
-[node name="Area3D" type="Area3D" parent="Player/Head"]
+[node name="ViewArea3D" type="Area3D" parent="Player/Head"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Head/Area3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -9.6165e-07, -22)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Head/ViewArea3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -9.17939e-07, -21)
 shape = SubResource("CylinderShape3D_kpcwv")
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
@@ -86,7 +95,7 @@ position = Vector2(960, 540)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_kcg2c")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD"]
+[node name="CrosshairProgressBar" type="TextureProgressBar" parent="HUD"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -101,6 +110,10 @@ grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 35.0
+step = 0.1
 fill_mode = 4
 texture_progress = ExtResource("5_fnhkm")
+
+[connection signal="timeout" from="SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="Player/Head/ViewArea3D" to="Player" method="_on_view_area_3d_body_entered"]
+[connection signal="body_exited" from="Player/Head/ViewArea3D" to="Player" method="_on_view_area_3d_body_exited"]
