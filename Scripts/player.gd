@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 
-const mouse_sensitivity = 0.2
+const mouse_sensitivity = 0.15
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

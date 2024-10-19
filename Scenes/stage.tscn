@@ -1,14 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj1kvqenmdado"]
+[gd_scene load_steps=8 format=3 uid="uid://dj1kvqenmdado"]
 
+[ext_resource type="Texture2D" uid="uid://bocre0msptsdx" path="res://2D Assets/AllSkyFree_Sky_ColdNight_Equirect.png" id="1_ssy54"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_uf0tx"]
+[ext_resource type="Texture2D" uid="uid://cdppsr266yfqs" path="res://2D Assets/halal_goku.jpg" id="3_cm4gf"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mg1sm"]
+panorama = ExtResource("1_ssy54")
+
+[sub_resource type="Sky" id="Sky_a3g5m"]
+sky_material = SubResource("PanoramaSkyMaterial_mg1sm")
+
+[sub_resource type="Environment" id="Environment_4ra15"]
+background_mode = 2
+background_color = Color(0.189328, 0.189328, 0.189328, 1)
+sky = SubResource("Sky_a3g5m")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.065042, 0.0725578, 0.106203, 1)
+fog_density = 0.1201
+fog_aerial_perspective = 0.043
+fog_sky_affect = 0.923
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nlon"]
 
 [node name="Stage" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ra15")
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(15, 1, 15)
+size = Vector3(80, 1, 70)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_uf0tx")
@@ -21,3 +44,12 @@ shape = SubResource("CapsuleShape3D_0nlon")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -39)
+texture = ExtResource("3_cm4gf")
