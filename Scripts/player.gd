@@ -5,8 +5,8 @@ extends CharacterBody3D
 @onready var camera = $Head/Camera3D
 
 @export var crosshair_progress_bar: TextureProgressBar
-@export var base_destroy_time: float = 0.6
-var destroy_time: float = 0.6
+@export var base_destroy_time: float = 1.2
+var destroy_time: float = 1.2
 var calculated_value_multiplier
 
 var enemy_array: Array
@@ -33,11 +33,26 @@ func _process(delta: float) -> void:
 		crosshair_progress_bar.value = 0
 	if enemy_array.size() >= 1:
 		destroy_time -= delta
-		crosshair_progress_bar.value = crosshair_progress_bar.max_value - destroy_time * calculated_value_multiplier
+		crosshair_progress_bar.value = calculate_progress_value()#crosshair_progress_bar.max_value - destroy_time * calculated_value_multiplier
 		if destroy_time <= 0:
 			for enemy in enemy_array:
 				enemy.queue_free()
 		
+
+func calculate_progress_value() -> float:
+	# ik ga van deze progress bar filling onzin een formule maken zodat het een ease out heeft!!
+	#return crosshair_progress_bar.max_value - destroy_time * calculated_value_multiplier
+	
+	# Normalize destroy_time (value between 0 and 1)
+	var normalized_time = 1 - (destroy_time / base_destroy_time)
+
+	# Apply cubic ease-out
+	var eased_time = 1 - pow(1 - normalized_time, 3)
+
+	# Update the progress bar value based on the eased time
+	return eased_time * crosshair_progress_bar.max_value
+	
+	#thank you chatgpt, ik heb wiskunde B gedaan maar ben hier te cooked voor
 
 func _on_view_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

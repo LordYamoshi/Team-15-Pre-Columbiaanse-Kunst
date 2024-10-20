@@ -28,7 +28,7 @@ fog_sky_affect = 0.923
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kpcwv"]
 height = 42.0
-radius = 0.8
+radius = 1.0
 
 [node name="Stage" type="Node3D"]
 
@@ -40,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(80, 1, 70)
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("player")]
