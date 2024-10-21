@@ -20,7 +20,7 @@ tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.065042, 0.0725578, 0.106203, 1)
-fog_density = 0.1201
+fog_density = 0.2378
 fog_aerial_perspective = 0.043
 fog_sky_affect = 0.923
 
@@ -68,6 +68,8 @@ shape = SubResource("CylinderShape3D_kpcwv")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.083
 omni_range = 6.519
 omni_attenuation = 0.512
 

@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position = position.move_toward(player.position, delta * 3)
+	position = position.move_toward(player.position, delta * 2.5)
