@@ -9,6 +9,8 @@ extends CharacterBody3D
 var destroy_time: float = 1.2
 var calculated_value_multiplier
 
+@export var spawner_script : Node3D
+
 var enemy_array: Array
 
 const mouse_sensitivity = 0.15
@@ -36,6 +38,7 @@ func _process(delta: float) -> void:
 		crosshair_progress_bar.value = calculate_progress_value()#crosshair_progress_bar.max_value - destroy_time * calculated_value_multiplier
 		if destroy_time <= 0:
 			for enemy in enemy_array:
+				spawner_script.enemies_remaining -= 1
 				enemy.queue_free()
 		
 
