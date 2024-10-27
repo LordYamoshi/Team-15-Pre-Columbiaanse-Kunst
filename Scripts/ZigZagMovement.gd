@@ -1,6 +1,6 @@
 extends Node
 
-var zigzag_duration = 0.5
+var zigzag_duration = 1#0.5
 var zigzag_strength = 2 
 var time_elapsed = 0.0 
 var moving_left = true
@@ -24,5 +24,5 @@ func move_towards_player(target_position: Vector3, delta: float) -> Vector3:
 	
 	var zigzag_vector = direction.cross(Vector3.UP).normalized() * zigzag_offset
 	
-	var movement_vector = (direction + zigzag_vector).normalized() * get_parent().speed 
+	var movement_vector = (direction + zigzag_vector).normalized() * get_parent().speed * delta 
 	return movement_vector

@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var movement_pattern : Resource
 var pattern_instance = null
 var player
-var speed = 25;
+var speed = 2.5#25;
 
 
 # Called when the node enters the scene tree for the first time.

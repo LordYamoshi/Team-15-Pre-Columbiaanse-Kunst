@@ -45,7 +45,7 @@ size = Vector3(80, 1, 70)
 script = ExtResource("2_ghh2g")
 player = NodePath("../Player")
 wave_data = [{
-"count": 5,
+"count": 20,
 "enemy": ExtResource("3_ma0ca")
 }, {
 "count": 5,
