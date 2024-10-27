@@ -5,6 +5,7 @@ var pattern_instance = null
 var player
 var speed = 25;
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_parent().player
