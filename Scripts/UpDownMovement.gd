@@ -6,6 +6,7 @@ var time_elapsed = 0.0
 
 
 
+
 func move_towards_player(target_position: Vector3, delta: float) -> Vector3:
 	var direction = (target_position - get_parent().position).normalized()
 	
@@ -18,9 +19,9 @@ func move_towards_player(target_position: Vector3, delta: float) -> Vector3:
 		zigzag_offset = -zigzag_strength
 	else:
 		time_elapsed = 0.0
+
 	
-	
-	var zigzag_vector = direction.cross(Vector3.UP).normalized() * zigzag_offset
+	var zigzag_vector = Vector3(0,zigzag_offset,0)
 	
 	var movement_vector = (direction + zigzag_vector).normalized() * get_parent().speed * delta 
 	return movement_vector

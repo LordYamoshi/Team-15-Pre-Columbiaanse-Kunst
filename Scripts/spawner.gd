@@ -47,7 +47,6 @@ func on_spawn_enemy():
 		var enemy_instance = enemy_scene.instantiate()
 		add_child(enemy_instance)
 		enemy_instance.position = (player.position + Vector3(0, 0, 30)).rotated(Vector3.UP, randf_range(0, 360))
-		
 		print("Spawned enemy, enemies remaining:", enemies_remaining)
 	else:
 		spawn_timer.stop()
