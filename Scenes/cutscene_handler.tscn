@@ -7,6 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://c2nrjguav3aqa" path="res://2D Assets/Cutscenes/transition.png" id="3_qq5v0"]
 [ext_resource type="Texture2D" uid="uid://bd8akb0rietk0" path="res://2D Assets/Cutscenes/menuscreen.png" id="5_aav3e"]
 
+[sub_resource type="Animation" id="Animation_6x57w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ri1g4"]
 resource_name = "transition"
 length = 0.6
@@ -36,21 +51,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"check_next_function"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_6x57w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TransitionSprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ml25w"]
