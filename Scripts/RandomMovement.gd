@@ -11,5 +11,4 @@ var movement_scripts = [move_towards_player, zigzag_movement, circle_movement, u
 func set_random_movement_pattern(enemy):
 	# Choose a random script from the array
 	var random_script = movement_scripts.pick_random()
-
 	enemy.movement_pattern = random_script
