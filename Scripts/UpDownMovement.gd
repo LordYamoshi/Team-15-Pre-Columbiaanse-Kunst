@@ -4,8 +4,7 @@ var zigzag_duration = 1#0.5
 var zigzag_strength = 2 
 var time_elapsed = 0.0 
 
-
-
+var sprite = preload('res://2D Assets/monsterhand.png')
 
 func move_towards_player(target_position: Vector3, delta: float) -> Vector3:
 	var direction = (target_position - get_parent().position).normalized()

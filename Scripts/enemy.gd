@@ -33,4 +33,5 @@ func set_random_movement_pattern() -> void:
 	
 	if movement_pattern:
 		pattern_instance = movement_pattern.new()
+		get_child(1).texture = pattern_instance.sprite
 		add_child(pattern_instance)
