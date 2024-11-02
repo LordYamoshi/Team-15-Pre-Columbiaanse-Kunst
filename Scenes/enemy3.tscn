@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmlccncd17lei"]
+
+[ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="1_a0lrs"]
+[ext_resource type="Script" path="res://Scripts/ZigZagMovement.gd" id="2_h51es"]
+
+[node name="Enemy3" instance=ExtResource("1_a0lrs")]
+movement_pattern = ExtResource("2_h51es")

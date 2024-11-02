@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://dj1kvqenmdado"]
+[gd_scene load_steps=17 format=3 uid="uid://dj1kvqenmdado"]
 
 [ext_resource type="Texture2D" uid="uid://bocre0msptsdx" path="res://2D Assets/AllSkyFree_Sky_ColdNight_Equirect.png" id="1_ssy54"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_uf0tx"]
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_ghh2g"]
 [ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="3_ma0ca"]
 [ext_resource type="Texture2D" uid="uid://c2xyr21b2f0ps" path="res://2D Assets/crosshair.png" id="4_kcg2c"]
-[ext_resource type="PackedScene" uid="uid://bmmnr65qbqsq1" path="res://Scenes/enemy2.tscn" id="4_mw651"]
+[ext_resource type="PackedScene" uid="uid://dvy7fbh0pw44j" path="res://Scenes/enemy2.tscn" id="4_mw651"]
 [ext_resource type="Texture2D" uid="uid://bkbmils6anfc" path="res://2D Assets/crosshairfull.png" id="5_fnhkm"]
+[ext_resource type="PackedScene" uid="uid://bmlccncd17lei" path="res://Scenes/enemy3.tscn" id="5_yucrq"]
+[ext_resource type="PackedScene" uid="uid://bcw7yw6fqrggo" path="res://Scenes/enemy4.tscn" id="6_nwd4q"]
+[ext_resource type="PackedScene" uid="uid://dpqd0dhbs8od4" path="res://Scenes/enemy5.tscn" id="7_32k2i"]
+[ext_resource type="PackedScene" uid="uid://h8lmkmfrr6gs" path="res://Scenes/enemy6.tscn" id="8_atw2l"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mg1sm"]
 panorama = ExtResource("1_ssy54")
@@ -45,11 +49,23 @@ size = Vector3(80, 1, 70)
 script = ExtResource("2_ghh2g")
 player = NodePath("../Player")
 wave_data = [{
-"count": 20,
+"count": 10,
 "enemy": ExtResource("3_ma0ca")
 }, {
-"count": 5,
+"count": 10,
 "enemy": ExtResource("4_mw651")
+}, {
+"count": 10,
+"enemy": ExtResource("5_yucrq")
+}, {
+"count": 10,
+"enemy": ExtResource("6_nwd4q")
+}, {
+"count": 10,
+"enemy": ExtResource("7_32k2i")
+}, {
+"count": 10,
+"enemy": ExtResource("8_atw2l")
 }]
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("crosshair_progress_bar", "spawner_script") groups=["player"]]

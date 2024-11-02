@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpqd0dhbs8od4"]
+
+[ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="1_rdtt8"]
+[ext_resource type="Script" path="res://Scripts/RandomMovement.gd" id="2_qy8us"]
+
+[node name="Enemy5" instance=ExtResource("1_rdtt8")]
+movement_pattern = ExtResource("2_qy8us")

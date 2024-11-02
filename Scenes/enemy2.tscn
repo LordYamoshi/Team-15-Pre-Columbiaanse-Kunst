@@ -1,23 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmmnr65qbqsq1"]
+[gd_scene load_steps=4 format=3 uid="uid://dvy7fbh0pw44j"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_5vnrf"]
-[ext_resource type="Script" path="res://Scripts/UpDownMovement.gd" id="2_gybu6"]
+[ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="1_xv51l"]
+[ext_resource type="Script" path="res://Scripts/CircleAroundPlayerMovement.gd" id="2_7yvv8"]
 [ext_resource type="Texture2D" uid="uid://cdppsr266yfqs" path="res://2D Assets/halal_goku.jpg" id="2_jtl5o"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_7jdrr"]
-height = 1.0
-radius = 1.1
+[node name="Enemy2" instance=ExtResource("1_xv51l")]
+movement_pattern = ExtResource("2_7yvv8")
 
-[node name="Enemy" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -16)
-script = ExtResource("1_5vnrf")
-movement_pattern = ExtResource("2_gybu6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
-shape = SubResource("CylinderShape3D_7jdrr")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 1.5, 0)
-billboard = 2
+[node name="Sprite3D" parent="." index="1"]
 texture = ExtResource("2_jtl5o")
