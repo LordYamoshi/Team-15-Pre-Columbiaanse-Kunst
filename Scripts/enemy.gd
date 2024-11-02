@@ -5,6 +5,7 @@ var pattern_instance = null
 var player
 var speed = 2.5#25;
 
+signal defeated
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,3 +36,7 @@ func set_random_movement_pattern() -> void:
 		pattern_instance = movement_pattern.new()
 		get_child(1).texture = pattern_instance.sprite
 		add_child(pattern_instance)
+
+func die():
+	emit_signal("defeated")
+	queue_free()
