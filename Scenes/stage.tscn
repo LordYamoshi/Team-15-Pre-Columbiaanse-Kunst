@@ -106,6 +106,13 @@ light_color = Color(1, 1, 0.698039, 1)
 omni_range = 6.519
 omni_attenuation = 0.512
 
+[node name="ExtraMain" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+light_color = Color(1, 1, 0.698039, 1)
+light_volumetric_fog_energy = 0.3
+omni_range = 6.519
+omni_attenuation = 0.512
+
 [node name="MainLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 light_color = Color(1, 0.886275, 0.196078, 1)
