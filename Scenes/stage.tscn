@@ -41,7 +41,7 @@ volumetric_fog_detail_spread = 4.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nlon"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kpcwv"]
-height = 42.0
+height = 34.0
 radius = 1.0
 
 [node name="Stage" type="Node3D"]
@@ -95,7 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 [node name="ViewArea3D" type="Area3D" parent="Player/Head"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Head/ViewArea3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -9.17939e-07, -21)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -7.43093e-07, -17)
 shape = SubResource("CylinderShape3D_kpcwv")
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
@@ -108,35 +108,35 @@ omni_attenuation = 0.512
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
-light_color = Color(1, 1, 0.698039, 1)
+light_color = Color(1, 0.886275, 0.196078, 1)
 light_volumetric_fog_energy = 0.0
 omni_range = 6.519
 omni_attenuation = 0.512
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -6, 0)
-light_color = Color(1, 1, 0.698039, 1)
+light_color = Color(1, 0.584314, 0.0862745, 1)
 light_energy = 0.5
 omni_range = 6.519
 omni_attenuation = 0.512
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -6, -3)
-light_color = Color(1, 1, 0.698039, 1)
+light_color = Color(1, 0.584314, 0.0862745, 1)
 light_energy = 0.5
 omni_range = 6.519
 omni_attenuation = 0.512
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -6, 1)
-light_color = Color(1, 1, 0.698039, 1)
+light_color = Color(1, 0.584314, 0.0862745, 1)
 light_energy = 0.5
 omni_range = 6.519
 omni_attenuation = 0.512
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 4)
-light_color = Color(1, 1, 0.698039, 1)
+light_color = Color(1, 0.584314, 0.0862745, 1)
 light_energy = 0.5
 omni_range = 6.519
 omni_attenuation = 0.512
