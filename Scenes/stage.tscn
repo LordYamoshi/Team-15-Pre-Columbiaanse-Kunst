@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dj1kvqenmdado"]
+[gd_scene load_steps=18 format=3 uid="uid://dj1kvqenmdado"]
 
 [ext_resource type="Texture2D" uid="uid://bocre0msptsdx" path="res://2D Assets/AllSkyFree_Sky_ColdNight_Equirect.png" id="1_ssy54"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_uf0tx"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bcw7yw6fqrggo" path="res://Scenes/enemy4.tscn" id="6_nwd4q"]
 [ext_resource type="PackedScene" uid="uid://dpqd0dhbs8od4" path="res://Scenes/enemy5.tscn" id="7_32k2i"]
 [ext_resource type="PackedScene" uid="uid://h8lmkmfrr6gs" path="res://Scenes/enemy6.tscn" id="8_atw2l"]
+[ext_resource type="PackedScene" uid="uid://di0memj5fdnfy" path="res://3D Assets/flowers 4 ignite.glb" id="12_eru57"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mg1sm"]
 panorama = ExtResource("1_ssy54")
@@ -25,10 +26,17 @@ sky = SubResource("Sky_a3g5m")
 tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0.065042, 0.0725578, 0.106203, 1)
-fog_density = 0.2378
+fog_mode = 1
+fog_light_color = Color(0.0823529, 0.0901961, 0.133333, 1)
+fog_density = 1.0
 fog_aerial_perspective = 0.043
 fog_sky_affect = 0.923
+fog_depth_begin = 0.0
+fog_depth_end = 15.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_emission = Color(0.0784314, 0.0862745, 0.12549, 1)
+volumetric_fog_detail_spread = 4.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nlon"]
 
@@ -41,8 +49,12 @@ radius = 1.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4ra15")
 
+[node name="flowers 4 ignite" parent="." instance=ExtResource("12_eru57")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -13.7, 0)
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 size = Vector3(80, 1, 70)
 
 [node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("player")]
@@ -89,9 +101,43 @@ shape = SubResource("CylinderShape3D_kpcwv")
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-light_color = Color(0, 1, 1, 1)
-light_energy = 0.083
+visible = false
+light_color = Color(1, 1, 0.698039, 1)
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+light_color = Color(1, 1, 0.698039, 1)
+light_volumetric_fog_energy = 0.0
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -6, 0)
+light_color = Color(1, 1, 0.698039, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -6, -3)
+light_color = Color(1, 1, 0.698039, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -6, 1)
+light_color = Color(1, 1, 0.698039, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 4)
+light_color = Color(1, 1, 0.698039, 1)
+light_energy = 0.5
 omni_range = 6.519
 omni_attenuation = 0.512
 

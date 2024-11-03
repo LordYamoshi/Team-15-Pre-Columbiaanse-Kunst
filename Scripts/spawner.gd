@@ -47,7 +47,7 @@ func on_spawn_enemy():
 		var enemy_scene = wave_info["enemy"]
 		var enemy_instance = enemy_scene.instantiate()
 		add_child(enemy_instance)
-		enemy_instance.position = (player.position + Vector3(0, 0, 30)).rotated(Vector3.UP, randf_range(0, 360))
+		enemy_instance.position = (player.position + Vector3(0, 0, 40)).rotated(Vector3.UP, randf_range(0, 360))
 		enemy_instance.connect("defeated", Callable(self, "on_enemy_defeated"))
 		enemies_remaining -= 1
 		enemies_alive += 1
