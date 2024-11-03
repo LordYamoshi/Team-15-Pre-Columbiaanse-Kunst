@@ -1,0 +1,24 @@
+[gd_scene load_steps=13 format=3 uid="uid://mbg8sbtji8ne"]
+
+[ext_resource type="PackedScene" uid="uid://dr6lwdkgv21gl" path="res://Scenes/cutscene_handler.tscn" id="1_1sjy8"]
+[ext_resource type="Texture2D" uid="uid://ge1cee2y6828" path="res://2D Assets/Cutscenes/einde1.png" id="2_2h3ev"]
+[ext_resource type="Texture2D" uid="uid://jhr8chqhnq8e" path="res://2D Assets/Cutscenes/screenshot.png" id="2_4kmmi"]
+[ext_resource type="Script" path="res://Scripts/cutscene_handler_outro.gd" id="2_5h4y5"]
+[ext_resource type="Texture2D" uid="uid://ceausm4u5s6me" path="res://2D Assets/Cutscenes/einde2.png" id="3_i743p"]
+[ext_resource type="Texture2D" uid="uid://co4nm8l1h5vnd" path="res://2D Assets/Cutscenes/einde3.png" id="4_j25gr"]
+[ext_resource type="Texture2D" uid="uid://br4xl3i02ydje" path="res://2D Assets/Cutscenes/einde4.png" id="5_bxi0y"]
+[ext_resource type="Texture2D" uid="uid://bbutdcyecf2h7" path="res://2D Assets/Cutscenes/einde5.png" id="6_k5viq"]
+[ext_resource type="Texture2D" uid="uid://buey5r1ehofpl" path="res://2D Assets/Cutscenes/einde6.png" id="7_xfm74"]
+[ext_resource type="Texture2D" uid="uid://dgiirwhr5o3gr" path="res://2D Assets/Cutscenes/einde7.png" id="8_sgbmf"]
+[ext_resource type="Texture2D" uid="uid://j1phn5wcfqr5" path="res://2D Assets/Cutscenes/einde8.png" id="9_3n0ic"]
+[ext_resource type="Texture2D" uid="uid://blcqri8nhe3jb" path="res://2D Assets/Cutscenes/einde9.png" id="10_yc5wv"]
+
+[node name="CutsceneHandlerOutro" instance=ExtResource("1_1sjy8")]
+script = ExtResource("2_5h4y5")
+next_scene = "res://Scenes/cutscene_handler.tscn"
+images = Array[Texture2D]([ExtResource("2_2h3ev"), ExtResource("3_i743p"), ExtResource("4_j25gr"), ExtResource("5_bxi0y"), ExtResource("6_k5viq"), ExtResource("7_xfm74"), ExtResource("8_sgbmf"), ExtResource("9_3n0ic"), ExtResource("10_yc5wv")])
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-11, -3)
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("2_4kmmi")

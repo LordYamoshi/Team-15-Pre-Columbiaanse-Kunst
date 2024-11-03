@@ -5,12 +5,12 @@ extends Node2D
 
 @export var next_scene: String
 @export var images: Array[Texture2D] #voor de sprite2d
-var current_image = 0 #array index
+var current_image = -1 #array index
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sprite.texture = images[current_image]
-	#animation_player.play("transition")
+	#sprite.texture = images[current_image]
+	animation_player.play("transition")
 
 func _input(event: InputEvent) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not animation_player.is_playing():
@@ -20,9 +20,9 @@ func check_next_function():
 	current_image += 1
 	if current_image >= images.size():
 		## load next scene
-		## hier eigenlijk heel ff mee wachten nog, zodat de transition afgemaakt wordt, voor nu vervang ik de afbeelding wel met een screenshot van de game ofzo LMAO
-		sprite.texture = load("res://2D Assets/Cutscenes/screenshot.png")
 		
+		## IN DE OUTRO LAAD IK MAIN MENU AHH
+		sprite.texture = load("res://2D Assets/Cutscenes/menuscreen.png")
 		await get_tree().create_timer(0.3).timeout
 		get_parent().swap_scenes(next_scene)
 	else:

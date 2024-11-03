@@ -32,16 +32,17 @@ fog_density = 1.0
 fog_aerial_perspective = 0.043
 fog_sky_affect = 0.923
 fog_depth_begin = 0.0
-fog_depth_end = 15.0
+fog_depth_end = 10.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.03
 volumetric_fog_emission = Color(0.0784314, 0.0862745, 0.12549, 1)
+volumetric_fog_emission_energy = 0.8
 volumetric_fog_detail_spread = 4.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nlon"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kpcwv"]
-height = 34.0
+height = 42.0
 radius = 1.0
 
 [node name="Stage" type="Node3D"]
@@ -95,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 [node name="ViewArea3D" type="Area3D" parent="Player/Head"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Head/ViewArea3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -7.43093e-07, -17)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -9.17939e-07, -21)
 shape = SubResource("CylinderShape3D_kpcwv")
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]

@@ -39,6 +39,8 @@ func start_wave():
 		spawn_timer.start(spawn_interval)
 		print("Wave ", current_wave, " started with " , enemies_remaining, " enemies")
 	else:
+		## hier verplaatsen naar einde game!!
+		get_parent().get_parent().swap_scenes("res://Scenes/cutscene_handler_outro.tscn")
 		print("All waves completed!")
 		
 func on_spawn_enemy():
