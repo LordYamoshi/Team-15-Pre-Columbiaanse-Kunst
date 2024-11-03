@@ -210,6 +210,7 @@ omni_range = 6.519
 omni_attenuation = 0.512
 
 [node name="AndereBloemenLicht" type="Node3D" parent="MainLight"]
+visible = false
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -14.7, 14)
