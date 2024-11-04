@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmlccncd17lei"]
+[gd_scene load_steps=4 format=3 uid="uid://bmlccncd17lei"]
 
 [ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="1_a0lrs"]
 [ext_resource type="Script" path="res://Scripts/ZigZagMovement.gd" id="2_h51es"]
+[ext_resource type="Texture2D" uid="uid://dt7wcjgeu5y2s" path="res://2D Assets/spin.png" id="3_68dly"]
 
 [node name="Enemy3" instance=ExtResource("1_a0lrs")]
 movement_pattern = ExtResource("2_h51es")
+
+[node name="Sprite3D" parent="." index="1"]
+texture = ExtResource("3_68dly")

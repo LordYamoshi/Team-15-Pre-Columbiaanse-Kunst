@@ -2,7 +2,7 @@ extends Node
 
 var min_distance_from_player = 2.0
 
-var sprite = preload('res://2D Assets/test_1.jpg') 
+var sprite = preload('res://2D Assets/krokodil.png') 
 
 func move_towards_player(target_position: Vector3, delta: float) -> Vector3:
 	var direction = (target_position - get_parent().position).normalized()

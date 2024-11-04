@@ -3,7 +3,7 @@ extends Node
 var drift_strength = 1.0
 var drift_directions = ["left", "right"]
 
-var sprite = preload('res://2D Assets/halal_goku.jpg')
+var sprite = preload('res://2D Assets/wolf.png')
 
 var random_value
 

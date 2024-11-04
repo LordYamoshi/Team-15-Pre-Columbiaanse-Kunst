@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="1_xv51l"]
 [ext_resource type="Script" path="res://Scripts/CircleAroundPlayerMovement.gd" id="2_7yvv8"]
-[ext_resource type="Texture2D" uid="uid://cdppsr266yfqs" path="res://2D Assets/halal_goku.jpg" id="2_jtl5o"]
+[ext_resource type="Texture2D" uid="uid://jtdlk6txvanc" path="res://2D Assets/wolf.png" id="3_ixj6c"]
 
 [node name="Enemy2" instance=ExtResource("1_xv51l")]
 movement_pattern = ExtResource("2_7yvv8")
 
 [node name="Sprite3D" parent="." index="1"]
-texture = ExtResource("2_jtl5o")
+texture = ExtResource("3_ixj6c")

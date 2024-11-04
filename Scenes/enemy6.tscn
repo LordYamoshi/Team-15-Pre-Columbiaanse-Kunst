@@ -1,10 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://h8lmkmfrr6gs"]
+[gd_scene load_steps=2 format=3 uid="uid://h8lmkmfrr6gs"]
 
 [ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="1_kqtgu"]
-[ext_resource type="Texture2D" uid="uid://dqafa8nkf3qwj" path="res://2D Assets/test_2.jpg" id="2_lx3b0"]
 
 [node name="Enemy6" instance=ExtResource("1_kqtgu")]
-
-[node name="Sprite3D" parent="." index="1"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.5, 0)
-texture = ExtResource("2_lx3b0")
