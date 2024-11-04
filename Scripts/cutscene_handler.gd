@@ -21,9 +21,11 @@ func check_next_function():
 	if current_image >= images.size():
 		## load next scene
 		## hier eigenlijk heel ff mee wachten nog, zodat de transition afgemaakt wordt, voor nu vervang ik de afbeelding wel met een screenshot van de game ofzo LMAO
-		sprite.texture = load("res://2D Assets/Cutscenes/screenshot.png")
+		# als je hier de gameplay scene laadt voordat je deze scene delete, dan loopt die mooi over into gameplay
+		var temporary_children = get_parent().load_scene(next_scene)
+		sprite.texture = load("res://2D Assets/Cutscenes/empty.png")
 		await get_tree().create_timer(0.3).timeout
-		get_parent().swap_scenes(next_scene)
+		temporary_children.queue_free()
 	else:
 		load_next_image()
 

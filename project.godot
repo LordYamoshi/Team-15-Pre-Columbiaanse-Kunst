@@ -24,6 +24,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Team 15 HKU Game"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.1087, 0.166664, 0.26355, 1)

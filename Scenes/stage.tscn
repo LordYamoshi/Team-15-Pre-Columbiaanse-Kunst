@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_uf0tx"]
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_ghh2g"]
 [ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="3_ma0ca"]
-[ext_resource type="Texture2D" uid="uid://c2xyr21b2f0ps" path="res://2D Assets/crosshair.png" id="4_kcg2c"]
 [ext_resource type="PackedScene" uid="uid://dvy7fbh0pw44j" path="res://Scenes/enemy2.tscn" id="4_mw651"]
-[ext_resource type="Texture2D" uid="uid://bkbmils6anfc" path="res://2D Assets/crosshairfull.png" id="5_fnhkm"]
 [ext_resource type="PackedScene" uid="uid://bmlccncd17lei" path="res://Scenes/enemy3.tscn" id="5_yucrq"]
 [ext_resource type="PackedScene" uid="uid://bcw7yw6fqrggo" path="res://Scenes/enemy4.tscn" id="6_nwd4q"]
 [ext_resource type="PackedScene" uid="uid://dpqd0dhbs8od4" path="res://Scenes/enemy5.tscn" id="7_32k2i"]
 [ext_resource type="PackedScene" uid="uid://h8lmkmfrr6gs" path="res://Scenes/enemy6.tscn" id="8_atw2l"]
+[ext_resource type="Texture2D" uid="uid://t7k341vudiuj" path="res://2D Assets/UI/ring_01.png" id="11_scisp"]
+[ext_resource type="Texture2D" uid="uid://chd2e4g81didm" path="res://2D Assets/UI/ring_02_coloured.png" id="12_tsawu"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mg1sm"]
 panorama = ExtResource("1_ssy54")
@@ -70,7 +70,7 @@ wave_data = [{
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("crosshair_progress_bar", "spawner_script") groups=["player"]]
 script = ExtResource("1_uf0tx")
-crosshair_progress_bar = NodePath("../HUD/CrosshairProgressBar")
+crosshair_progress_bar = NodePath("../HUD/CenterContainer/CrosshairProgressBar")
 spawner_script = NodePath("../Spawner")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -97,29 +97,32 @@ omni_attenuation = 0.512
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Crosshair" type="Sprite2D" parent="HUD"]
-position = Vector2(960, 540)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("4_kcg2c")
-
-[node name="CrosshairProgressBar" type="TextureProgressBar" parent="HUD"]
+[node name="CenterContainer" type="CenterContainer" parent="HUD"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -409.0
-offset_top = -410.0
-offset_right = 615.0
-offset_bottom = 614.0
+offset_left = -512.0
+offset_top = -512.0
+offset_right = 512.0
+offset_bottom = 512.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.8, 0.8)
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="CrosshairProgressBar" type="TextureProgressBar" parent="HUD/CenterContainer"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 step = 0.1
 fill_mode = 4
-texture_progress = ExtResource("5_fnhkm")
+nine_patch_stretch = true
+texture_under = ExtResource("11_scisp")
+texture_progress = ExtResource("12_tsawu")
+tint_under = Color(1, 1, 1, 0.901961)
 
 [connection signal="body_entered" from="Player/Head/ViewArea3D" to="Player" method="_on_view_area_3d_body_entered"]
 [connection signal="body_exited" from="Player/Head/ViewArea3D" to="Player" method="_on_view_area_3d_body_exited"]
