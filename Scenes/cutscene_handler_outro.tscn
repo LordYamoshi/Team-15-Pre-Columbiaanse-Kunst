@@ -19,6 +19,4 @@ next_scene = "res://Scenes/cutscene_handler.tscn"
 images = Array[Texture2D]([ExtResource("2_2h3ev"), ExtResource("3_i743p"), ExtResource("4_j25gr"), ExtResource("5_bxi0y"), ExtResource("6_k5viq"), ExtResource("7_xfm74"), ExtResource("8_sgbmf"), ExtResource("9_3n0ic"), ExtResource("10_yc5wv")])
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(-11, -3)
-scale = Vector2(1.01, 1.01)
 texture = ExtResource("2_4kmmi")

@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dpqd0dhbs8od4" path="res://Scenes/enemy5.tscn" id="7_32k2i"]
 [ext_resource type="PackedScene" uid="uid://h8lmkmfrr6gs" path="res://Scenes/enemy6.tscn" id="8_atw2l"]
 [ext_resource type="Texture2D" uid="uid://t7k341vudiuj" path="res://2D Assets/UI/ring_01.png" id="11_scisp"]
-[ext_resource type="Texture2D" uid="uid://chd2e4g81didm" path="res://2D Assets/UI/ring_02_coloured.png" id="12_tsawu"]
 [ext_resource type="PackedScene" uid="uid://di0memj5fdnfy" path="res://3D Assets/flowers 4 ignite.glb" id="12_eru57"]
+[ext_resource type="Texture2D" uid="uid://chd2e4g81didm" path="res://2D Assets/UI/ring_02_coloured.png" id="12_tsawu"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mg1sm"]
 panorama = ExtResource("1_ssy54")
@@ -91,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_0nlon")
 
 [node name="Head" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.75, 0)
 
 [node name="ViewArea3D" type="Area3D" parent="Player/Head"]
 

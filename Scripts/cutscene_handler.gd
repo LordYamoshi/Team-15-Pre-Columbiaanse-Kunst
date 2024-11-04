@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not animation_player.is_playing():
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		animation_player.play("transition")
 
 func check_next_function():
@@ -24,7 +25,7 @@ func check_next_function():
 		# als je hier de gameplay scene laadt voordat je deze scene delete, dan loopt die mooi over into gameplay
 		var temporary_children = get_parent().load_scene(next_scene)
 		sprite.texture = load("res://2D Assets/Cutscenes/empty.png")
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.5).timeout
 		temporary_children.queue_free()
 	else:
 		load_next_image()
