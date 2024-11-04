@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dr6lwdkgv21gl"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene_handler.gd" id="1_va0ps"]
-[ext_resource type="Texture2D" uid="uid://q3i0nhgd4eml" path="res://2D Assets/Cutscenes/intro1.png" id="2_7br0s"]
+[ext_resource type="Texture2D" uid="uid://bnd8nxe851hmx" path="res://2D Assets/Cutscenes/intro0.png" id="2_7c3g5"]
 [ext_resource type="Texture2D" uid="uid://bnv75s154o4vj" path="res://2D Assets/Cutscenes/intro2.png" id="3_i2b3g"]
 [ext_resource type="Texture2D" uid="uid://c2nrjguav3aqa" path="res://2D Assets/Cutscenes/transition.png" id="3_qq5v0"]
 [ext_resource type="Texture2D" uid="uid://kqdj0mersfqs" path="res://2D Assets/Cutscenes/intro3.png" id="4_hs2mx"]
@@ -70,7 +70,7 @@ _data = {
 [node name="CutsceneHandler" type="Node2D"]
 script = ExtResource("1_va0ps")
 next_scene = "res://Scenes/stage.tscn"
-images = Array[Texture2D]([ExtResource("2_7br0s"), ExtResource("3_i2b3g"), ExtResource("4_hs2mx"), ExtResource("5_wgrca"), ExtResource("6_8y38g"), ExtResource("7_yp75b"), ExtResource("8_sroy0"), ExtResource("9_b4jbx"), ExtResource("10_4g3qv"), ExtResource("11_bm1b4"), ExtResource("12_p58fa")])
+images = Array[Texture2D]([ExtResource("2_7c3g5"), ExtResource("3_i2b3g"), ExtResource("4_hs2mx"), ExtResource("5_wgrca"), ExtResource("6_8y38g"), ExtResource("7_yp75b"), ExtResource("8_sroy0"), ExtResource("9_b4jbx"), ExtResource("10_4g3qv"), ExtResource("11_bm1b4"), ExtResource("12_p58fa")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-11, -3)
