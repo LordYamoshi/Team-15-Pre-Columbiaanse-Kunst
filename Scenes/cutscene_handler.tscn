@@ -62,9 +62,11 @@ _data = {
 [node name="CutsceneHandler" type="Node2D"]
 script = ExtResource("1_va0ps")
 next_scene = "res://Scenes/stage.tscn"
-images = Array[Texture2D]([ExtResource("2_0lhj5"), ExtResource("3_auvws"), ExtResource("2_t8v41")])
+images = Array[Texture2D]([ExtResource("5_aav3e"), ExtResource("2_0lhj5"), ExtResource("3_auvws"), ExtResource("2_t8v41")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-11, -3)
+scale = Vector2(1.01, 1.01)
 texture = ExtResource("5_aav3e")
 centered = false
 
