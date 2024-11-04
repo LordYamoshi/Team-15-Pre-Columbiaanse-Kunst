@@ -1,0 +1,351 @@
+[gd_scene load_steps=18 format=3 uid="uid://dj1kvqenmdado"]
+
+[ext_resource type="Texture2D" uid="uid://bocre0msptsdx" path="res://2D Assets/AllSkyFree_Sky_ColdNight_Equirect.png" id="1_ssy54"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_uf0tx"]
+[ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_ghh2g"]
+[ext_resource type="PackedScene" uid="uid://cx1a32foho0xr" path="res://Scenes/enemy.tscn" id="3_ma0ca"]
+[ext_resource type="PackedScene" uid="uid://dvy7fbh0pw44j" path="res://Scenes/enemy2.tscn" id="4_mw651"]
+[ext_resource type="PackedScene" uid="uid://bmlccncd17lei" path="res://Scenes/enemy3.tscn" id="5_yucrq"]
+[ext_resource type="PackedScene" uid="uid://bcw7yw6fqrggo" path="res://Scenes/enemy4.tscn" id="6_nwd4q"]
+[ext_resource type="PackedScene" uid="uid://dpqd0dhbs8od4" path="res://Scenes/enemy5.tscn" id="7_32k2i"]
+[ext_resource type="PackedScene" uid="uid://h8lmkmfrr6gs" path="res://Scenes/enemy6.tscn" id="8_atw2l"]
+[ext_resource type="Texture2D" uid="uid://t7k341vudiuj" path="res://2D Assets/UI/ring_01.png" id="11_scisp"]
+[ext_resource type="PackedScene" uid="uid://di0memj5fdnfy" path="res://3D Assets/flowers 4 ignite.glb" id="12_eru57"]
+[ext_resource type="Texture2D" uid="uid://chd2e4g81didm" path="res://2D Assets/UI/ring_02_coloured.png" id="12_tsawu"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mg1sm"]
+panorama = ExtResource("1_ssy54")
+
+[sub_resource type="Sky" id="Sky_a3g5m"]
+sky_material = SubResource("PanoramaSkyMaterial_mg1sm")
+
+[sub_resource type="Environment" id="Environment_4ra15"]
+background_mode = 2
+background_color = Color(0.189328, 0.189328, 0.189328, 1)
+sky = SubResource("Sky_a3g5m")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.0823529, 0.0901961, 0.133333, 1)
+fog_density = 1.0
+fog_aerial_perspective = 0.043
+fog_sky_affect = 0.923
+fog_depth_begin = 0.0
+fog_depth_end = 10.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_emission = Color(0.0784314, 0.0862745, 0.12549, 1)
+volumetric_fog_emission_energy = 0.8
+volumetric_fog_detail_spread = 4.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nlon"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kpcwv"]
+height = 42.0
+radius = 1.0
+
+[node name="Stage" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ra15")
+
+[node name="flowers 4 ignite" parent="." instance=ExtResource("12_eru57")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -13.7, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+size = Vector3(80, 1, 70)
+
+[node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_ghh2g")
+player = NodePath("../Player")
+wave_data = [{
+"count": 10,
+"enemy": ExtResource("3_ma0ca")
+}, {
+"count": 10,
+"enemy": ExtResource("4_mw651")
+}, {
+"count": 10,
+"enemy": ExtResource("5_yucrq")
+}, {
+"count": 10,
+"enemy": ExtResource("6_nwd4q")
+}, {
+"count": 10,
+"enemy": ExtResource("7_32k2i")
+}, {
+"count": 10,
+"enemy": ExtResource("8_atw2l")
+}]
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("crosshair_progress_bar", "spawner_script") groups=["player"]]
+script = ExtResource("1_uf0tx")
+crosshair_progress_bar = NodePath("../HUD/CenterContainer/CrosshairProgressBar")
+spawner_script = NodePath("../Spawner")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0nlon")
+
+[node name="Head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.0017453, 0.999998, 0, -0.999998, 0.0017453, 0, 1.75, 0)
+
+[node name="ViewArea3D" type="Area3D" parent="Player/Head"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Head/ViewArea3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -9.17939e-07, -21)
+shape = SubResource("CylinderShape3D_kpcwv")
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false
+light_color = Color(1, 1, 0.698039, 1)
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="ExtraMain" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+light_color = Color(1, 1, 0.698039, 1)
+light_volumetric_fog_energy = 0.3
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="MainLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+light_color = Color(1, 0.886275, 0.196078, 1)
+light_volumetric_fog_energy = 0.0
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OranjeLichtjes" type="Node3D" parent="MainLight"]
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="MainLight/OranjeLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -5.7, 0)
+light_color = Color(1, 0.584314, 0.0862745, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="MainLight/OranjeLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -5.7, -3)
+light_color = Color(1, 0.584314, 0.0862745, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="MainLight/OranjeLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -5.7, 1)
+light_color = Color(1, 0.584314, 0.0862745, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="MainLight/OranjeLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.7, 4)
+light_color = Color(1, 0.584314, 0.0862745, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="BlauwPaarsLichtjes" type="Node3D" parent="MainLight"]
+visible = false
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="MainLight/BlauwPaarsLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.7, 7)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="MainLight/BlauwPaarsLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -9.7, 5)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="MainLight/BlauwPaarsLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -9.7, 2)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="MainLight/BlauwPaarsLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -9.7, 5)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="MainLight/BlauwPaarsLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -9.7, -2)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="MainLight/BlauwPaarsLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -9.7, -7)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="MainLight/BlauwPaarsLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -9.7, -8)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="MainLight/BlauwPaarsLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -9.7, -6)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="MainLight/BlauwPaarsLichtjes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -9.7, -3)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="AndereBloemenLicht" type="Node3D" parent="MainLight"]
+visible = false
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -14.7, 14)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -14.7, 8)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -14.7, 0)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -14.7, 14)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D15" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -14.7, 3)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -14.7, -14)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -14.7, -14)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -14.7, -5)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -14.7, -17)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -14.7, -11)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D16" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -14.7, -17)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D17" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -14.7, -10)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D18" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -14.7, -16)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="MainLight/AndereBloemenLicht"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -14.7, 9)
+light_color = Color(0.339553, 0.412835, 1, 1)
+light_energy = 0.5
+omni_range = 6.519
+omni_attenuation = 0.512
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -512.0
+offset_right = 512.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="CrosshairProgressBar" type="TextureProgressBar" parent="HUD/CenterContainer"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+step = 0.1
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("11_scisp")
+texture_progress = ExtResource("12_tsawu")
+tint_under = Color(1, 1, 1, 0.901961)
+
+[connection signal="body_entered" from="Player/Head/ViewArea3D" to="Player" method="_on_view_area_3d_body_entered"]
+[connection signal="body_exited" from="Player/Head/ViewArea3D" to="Player" method="_on_view_area_3d_body_exited"]
