@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dr6lwdkgv21gl"]
+[gd_scene load_steps=17 format=3 uid="uid://dr6lwdkgv21gl"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene_handler.gd" id="1_va0ps"]
 [ext_resource type="Texture2D" uid="uid://bnd8nxe851hmx" path="res://2D Assets/Cutscenes/intro0.png" id="2_7c3g5"]
 [ext_resource type="Texture2D" uid="uid://bnv75s154o4vj" path="res://2D Assets/Cutscenes/intro2.png" id="3_i2b3g"]
 [ext_resource type="Texture2D" uid="uid://c2nrjguav3aqa" path="res://2D Assets/Cutscenes/transition.png" id="3_qq5v0"]
 [ext_resource type="Texture2D" uid="uid://kqdj0mersfqs" path="res://2D Assets/Cutscenes/intro3.png" id="4_hs2mx"]
-[ext_resource type="Texture2D" uid="uid://bd8akb0rietk0" path="res://2D Assets/Cutscenes/menuscreen.png" id="5_aav3e"]
 [ext_resource type="Texture2D" uid="uid://tniq0teagt5e" path="res://2D Assets/Cutscenes/intro4.png" id="5_wgrca"]
 [ext_resource type="Texture2D" uid="uid://dh61h8tk0un8s" path="res://2D Assets/Cutscenes/intro5.png" id="6_8y38g"]
 [ext_resource type="Texture2D" uid="uid://djx5ek12ti7ai" path="res://2D Assets/Cutscenes/intro6.png" id="7_yp75b"]
@@ -75,7 +74,7 @@ images = Array[Texture2D]([ExtResource("2_7c3g5"), ExtResource("3_i2b3g"), ExtRe
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-11, -3)
 scale = Vector2(1.01, 1.01)
-texture = ExtResource("5_aav3e")
+texture = ExtResource("2_7c3g5")
 centered = false
 
 [node name="TransitionSprite" type="Sprite2D" parent="."]

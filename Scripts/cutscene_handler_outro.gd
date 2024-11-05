@@ -22,7 +22,7 @@ func check_next_function():
 		## load next scene
 		
 		## IN DE OUTRO LAAD IK MAIN MENU AHH
-		sprite.texture = load("res://2D Assets/Cutscenes/menuscreen.png")
+		sprite.texture = load("res://2D Assets/Cutscenes/intro0.png")
 		await get_tree().create_timer(0.3).timeout
 		get_parent().swap_scenes(next_scene)
 	else:

@@ -62,22 +62,22 @@ size = Vector3(80, 1, 70)
 script = ExtResource("2_ghh2g")
 player = NodePath("../Player")
 wave_data = [{
-"count": 10,
+"count": 5,
 "enemy": ExtResource("3_ma0ca")
 }, {
-"count": 10,
+"count": 5,
 "enemy": ExtResource("4_mw651")
 }, {
-"count": 10,
+"count": 5,
 "enemy": ExtResource("5_yucrq")
 }, {
-"count": 10,
+"count": 5,
 "enemy": ExtResource("6_nwd4q")
 }, {
-"count": 10,
+"count": 5,
 "enemy": ExtResource("7_32k2i")
 }, {
-"count": 10,
+"count": 5,
 "enemy": ExtResource("8_atw2l")
 }]
 
@@ -345,7 +345,7 @@ fill_mode = 4
 nine_patch_stretch = true
 texture_under = ExtResource("11_scisp")
 texture_progress = ExtResource("12_tsawu")
-tint_under = Color(1, 1, 1, 0.901961)
+tint_under = Color(1, 1, 1, 0.784314)
 
 [connection signal="body_entered" from="Player/Head/ViewArea3D" to="Player" method="_on_view_area_3d_body_entered"]
 [connection signal="body_exited" from="Player/Head/ViewArea3D" to="Player" method="_on_view_area_3d_body_exited"]

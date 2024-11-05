@@ -3,7 +3,7 @@ extends Node3D
 @export var player : CharacterBody3D
 #Variables
 @export var wave_data : Array #Array of dictionaries with enemy type and count per wave
-@export var time_between_waves :float = 5.0 #time between each wave
+@export var time_between_waves :float = 1.0 #time between each wave
 @export var spawn_interval :float = 1.0 # Spawn interval between each enemy
 
 var current_wave = 0 # To keep track of what wave it is
